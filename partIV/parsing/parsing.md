@@ -261,7 +261,7 @@ You should get the following (log-)likelihood value:
 Let assume we've a grammar with the following production rules.
 
 
-<pre>
+<pre style="background-color: white">
  <table>
   <tr>
    <th style="font-size: 110%; font-family: Arial, Helvetica, sans-serif"> Rule </th>
