@@ -1,6 +1,6 @@
 # Training the Berkeley Parser on the WSJ Penn treebank for the English language
 
-## What is the Parsing?
+## What is Parsing?
 
 * **INPUT:**
 
