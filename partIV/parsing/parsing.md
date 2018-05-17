@@ -183,23 +183,6 @@ Thus:
   <li> <span style="font-weight:bold"> F1-Measure </span> = 2 * 0.777 * 0.875 / (0.777 + 0.875) = 0.823...</li>
  </ul>
 
-
-<pre style="display: none">
-```
- $ java -cp libs/BerkeleyParser-1.7.jar edu.berkeley.nlp.PCFGLA.GrammarTrainer -v -SMcycles 2 -path data/wsj_02-21.parse -out wsj_grammar.gr -treebank SINGLEFILE
-```
-
-## Train the Berkeley Parser on toy grammar
-```
- $ java -cp libs/BerkeleyParser-1.7.jar edu.berkeley.nlp.PCFGLA.GrammarTrainer -v -SMcycles 1 -path toy.parse -out toy.gr -treebank SINGLEFILE
-```
-
-## View toy grammar file
-```
- $ java -cp libs/BerkeleyParser-1.7.jar edu/berkeley/nlp/PCFGLA/WriteGrammarToTextFile toy.gr toy
-```
-</pre>
-
 ## Parse a sentence input from STDIN
 By default, the BerkeleyParser will read a sentence from STDIN (one per line) and write parse trees to STDOUT.
 
@@ -278,11 +261,4 @@ You should get the following (log-)likelihood value:
 Train for more iterations by incresing the value of the *-SMcycles* parameter.
 Then, parse file ```wsj_23.pos``` and ```wsj_24.pos``` again. What happens?
 
-
-<pre style="display: none">
-## CKY - A dynamic programming algorithm
-* Given a PCFG and a sentence *s*, how do we find 
-      $alpha$
-
-</pre>
 
