@@ -206,7 +206,7 @@ Then, input the following sentence:
 Your output should looks like this:
 
 ```
-( (S (NP (DT The) (NN dog)) (VP (VB laugh)) (. .)) )
+( (S (NP (DT The) (NN dog)) (VP (VBZ laughs)) (. .)) )
 ```
 
 ![parse](img/Thedoglaug1610954013.png)
@@ -333,6 +333,6 @@ So, the most likely parse is 1 that has a probability of 0.24.
 
 ## Exercise 1. 
 Train for more iterations by increasing the value of the *-SMcycles* parameter.
-Then, parse file ```wsj_23.pos``` and ```wsj_24.pos``` again and evaluate the results. What happens? 
+Then, parse file ```wsj_23.pos``` and ```wsj_24.pos``` again and evaluate the results	. What happens? 
 
 
