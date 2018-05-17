@@ -269,7 +269,7 @@ Let assume we've a grammar with the following production rules.
   </tr>
   <tr>
    <td> S -> @S . <br/> S -> NP .</td>
-   <td> 1.0 <br/> 0.4</td>
+   <td> 0.6 <br/> 0.4</td>
   </tr>
   <tr>
    <td> @S -> NP VP</td>
@@ -292,9 +292,13 @@ Let assume we've a grammar with the following production rules.
     <td> 1.0 </td>
   </tr>
   <tr>
-    <td> VBZ -> laughs </br> NNS -> laughs </td>
-    <td> 0.6 </br> 0.4 </td>
+    <td> VBZ -> laughs </td> 
+    <td> 1.0 </td>
+  </tr> 
   <tr>
+    <td> NNS -> laughs </td>
+    <td> 1.0 </td>
+  </tr>
  </table>
 </pre>
 
