@@ -299,6 +299,10 @@ Let assume we've a grammar with the following production rules.
     <td> NNS -> laughs </td>
     <td> 1.0 </td>
   </tr>
+  <tr>
+    <td> . -> . </td>
+    <td> 1.0 </td>
+  </tr>
  </table>
 </pre>
 
