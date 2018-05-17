@@ -263,7 +263,8 @@ Let assume we've a grammar with the following production rules.
 Rule | Probability 
 --------- | ------ 
   S -> S . | 1.0 
-
+  S -> NP VP | 0.9 
+  S -> NP | 0.1 
   
 
 S -> S . |  1.0
