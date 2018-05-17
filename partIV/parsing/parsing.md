@@ -43,7 +43,7 @@ A Probabilistic context-free grammar (PCFG) is defined as follows:
 
 2. P is the set of probabilities on production rules
 
-<img src="img/PCFG.png" width="50%"></img>
+<img src="img/PCFG.png" width="80%"></img>
    
 You can generate a parse tree by repeatedly sampling a rule from a PCFG until you have only terminals.
 
