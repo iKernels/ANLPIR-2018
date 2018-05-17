@@ -296,6 +296,10 @@ Rule | Probability
     <td> DT -> The </td>
     <td> 1.0 </td>
   </tr>
+  <tr> 
+    <td> NN -> dog </td>
+    <td> 1.0 </td>
+  </tr>
  </table>
 </pre>
 
