@@ -306,6 +306,11 @@ Let assume we've a grammar with the following production rules.
  </table>
 </pre>
 
+Then, by applying the CKY algorithm we have the following parsing chart:
+
+<img src="img/cky_complete.png" />
+
+
 
 ## Exercise 1. 
 Train for more iterations by incresing the value of the *-SMcycles* parameter.
