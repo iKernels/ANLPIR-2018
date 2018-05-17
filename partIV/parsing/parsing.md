@@ -35,7 +35,7 @@ A context-free grammar (CFG) is a 4-tuple G = (N, &Sigma;, R, S) where:
 <li> S &isin; N is a distinguished start symbol </li>
 </ul>
 
-A Pobabilistic context-free grammar (PCFG) is defined as follows:
+A Probabilistic context-free grammar (PCFG) is defined as follows:
  
 **Definition** A PCFG is a 5-tuple G = (N, &Sigma;, R, S, P), where:
  
@@ -53,9 +53,9 @@ We would like to learn a grammar that generate all possible sentences for the En
 
 In order to learn a grammar we need a treebank. A treebank is a corpus of sentences annotated with their corresponding parsed trees. 
 
-The treebank for the English language is the Walll Street Journal Penn Tree Bank (PTB).
+The treebank for the English language is the WSJ Penn Treebank.
 
-The file `wsj_02-21.parse` in the data dir contains all the data from section 02 to section 21 of thte PTB corpus. 
+The file `wsj_02-21.parse` in the data dir contains all the data from section 02 to section 21 of the Penn Treebank corpus. 
 
 To train a parser model for English, type the following command:
 
