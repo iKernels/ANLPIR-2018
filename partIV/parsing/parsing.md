@@ -324,7 +324,7 @@ If you look at the top of the chart you see that the there are only two way of b
 
 <img src="img/cky_parse2_80.png"></img>
 
-So, the most likely parse is parse1 that has a probability of 0.24.
+So, the most likely parse is 1 that has a probability of 0.24.
 
 ## Exercise 1. 
 Train for more iterations by incresing the value of the *-SMcycles* parameter.
