@@ -283,6 +283,10 @@ Rule | Probability
   <tr>
    <td> @S -> NP VP</td>
    <td> 1.0 </td> 
+  </tr> 
+  <tr> 
+   <td> VP -> VBZ </td>
+   <td> 0.4 </td>
   </tr>
  </table>
 </pre>
