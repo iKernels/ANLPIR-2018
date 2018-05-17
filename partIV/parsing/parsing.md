@@ -269,6 +269,24 @@ Rule | Probability
   VP -> VB NP | 0.4
   VP -> VP PP | 0.2
 
+
+<pre>
+ <table>
+  <tr>  
+   <th style="font-size: 110%; font-family: Arial, Helvetica, sans-serif"> Rule </th>
+   <th style="font-size: 110%; font-family: Arial, Helvetica, sans-serif""> Probability </th>  
+  </tr>
+  <tr>
+   <td> S -> @S . <br/> S -> NP .</td>
+   <td> 1.0 <br/> 0.4</td>
+  </tr>
+  <tr>
+   <td> @S -> NP VP</td>
+   <td> 1.0 </td> 
+  </tr>
+ </table>
+</pre>
+
   
 
 S -> S . |  1.0
