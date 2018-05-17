@@ -286,7 +286,11 @@ Rule | Probability
   </tr> 
   <tr> 
    <td> VP -> VBZ </td>
-   <td> 0.4 </td>
+   <td> 1.0 </td>
+  </tr>
+  <tr>
+    <td> NP -> DT NN <br/> NP -> NN NNS</td>
+    <td>0.6 <br/> laughs</td>
   </tr>
  </table>
 </pre>
@@ -298,9 +302,7 @@ S -> S . |  1.0
 S -> NP VP | 0.9
 S -> NP    | 0.1
 --------------------
-VP -> VBZ   | 0.4
-VP -> VB NP | 0.4
-VP -> VP PP | 0.2
+VP -> VBZ   | 1.0
 --------------------
 NP -> DT NN  | 0.6
 NP -> DT NNS | 0.4
