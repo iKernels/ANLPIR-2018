@@ -260,9 +260,9 @@ You should get the following (log-)likelihood value:
 
 Let assume we've a grammar with the following production rules.
 
-----------------
+--------------
  S  S . | 1.0 
-----------------
+--------------
   
 
 S -> S . |  1.0
