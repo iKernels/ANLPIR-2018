@@ -312,7 +312,8 @@ Then, by applying the CKY algorithm we have the following parsing chart:
 
 If you look at the top of the chart you see that the there are only two way of building a complete parse tree:
 
-- (S -> @S .) &middot; (@S -> NP VP) &middot; (. -> .) &middot; (NP -> DT NN) &middot; (DT -> The) &middot; (NN -> dog)
+- (S -> @S .) &middot; (@S -> NP VP) &middot; (. -> .) &middot; (NP -> DT NN) &middot; (VP -> VBZ) &middot; (DT -> The) &middot; (NN -> dog) &middot; (VBZ -> laughs)= 0.6 &middot; 1.0 &middot; 1.0 &middot; 0.4 &middot; 1.0 &middot; 1.0 &middot; 1.0 &middot; 1.0  = 0.24
+
 - S -> NP . &middot;  
 
 ## Exercise 1. 
