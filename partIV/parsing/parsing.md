@@ -96,7 +96,7 @@ Parsers are evaluated according to Precision, Recall anf FMeasure of generated p
 
  - Precision = number of correct constituents in parser output /  number of constituents in the parser output
 
- - Recall =  number of correct constituens in parser outut / number of constituents in the gold standard
+ - Recall =  number of correct constituents in parser outut / number of constituents in the gold standard
 
  - F1-Measure = 2 * P * R / (P + R)
 
