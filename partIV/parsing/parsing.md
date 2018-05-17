@@ -262,7 +262,7 @@ Let assume we've a grammar with the following production rules.
 
 
 <pre style="background-color: white">
- <table>
+ <table style="background-color: white">
   <tr>
    <th style="font-size: 110%; font-family: Arial, Helvetica, sans-serif"> Rule </th>
    <th style="font-size: 110%; font-family: Arial, Helvetica, sans-serif""> Probability </th>
