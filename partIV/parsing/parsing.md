@@ -290,7 +290,11 @@ Rule | Probability
   </tr>
   <tr>
     <td> NP -> DT NN <br/> NP -> NN NNS</td>
-    <td>0.6 <br/> 0.4 </td>
+    <td> 0.6 <br/> 0.4 </td>
+  </tr>  
+  <tr>
+    <td> DT -> The </td>
+    <td> 1.0 </td>
   </tr>
  </table>
 </pre>
