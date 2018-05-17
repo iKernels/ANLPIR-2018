@@ -137,11 +137,11 @@ So, for example, let assume your have the following gold tree (left) and the par
   </tr>
   <tr>
    <td>TOP -> S</td>
-   <td style="color: red">TOP -> S</td> 
+   <td style="color: red"><u>TOP -> S</u></td> 
   </tr>
  <tr>
    <td>S -> `` NP VP .</td>
-   <td>html```<span style="color: red">S -> `` NP VP .</span>```</td> 
+   <td><span style="color: red"><u>S -> `` NP VP .</u></td> 
   </tr>
   <tr>
    <td>NP -> DT </td>
