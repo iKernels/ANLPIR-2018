@@ -291,7 +291,7 @@ Rule | Probability
   <tr>
     <td> NP -> DT NN <br/> NP -> NN NNS</td>
     <td> 0.6 <br/> 0.4 </td>
-  </tr>  
+  </tr>
   <tr>
     <td> DT -> The </td>
     <td> 1.0 </td>
@@ -300,6 +300,10 @@ Rule | Probability
     <td> NN -> dog </td>
     <td> 1.0 </td>
   </tr>
+  <tr>
+    <td> VBZ -> laughs </br> NNS -> laughs </td>
+    <td> 0.6 </br> 0.4 </td>
+  <tr>
  </table>
 </pre>
 
