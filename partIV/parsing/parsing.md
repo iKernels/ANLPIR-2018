@@ -141,7 +141,7 @@ So, for example, let assume your have the following gold tree (left) and the par
   </tr>
  <tr>
    <td>S -> `` NP VP .</td>
-   <td><span style="color: red; text-decoration: overline">S -> `` NP VP .</td> 
+   <td><span style="color: red; text-decoration: overline">**S -> `` NP VP .**</td> 
   </tr>
   <tr>
    <td>NP -> DT </td>
