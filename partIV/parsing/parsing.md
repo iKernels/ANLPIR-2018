@@ -265,6 +265,10 @@ Rule | Probability
   S -> S . | 1.0 
   S -> NP VP | 0.9 
   S -> NP | 0.1 
+  VP -> VBZ | 0.4
+  VP -> VB NP | 0.4
+  VP -> VP PP | 0.2
+
   
 
 S -> S . |  1.0
