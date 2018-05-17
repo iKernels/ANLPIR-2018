@@ -320,6 +320,8 @@ If you look at the top of the chart you see that the there are only two way of b
 
 ```(S (NP (DT The) (NP (NN dog) (NNS laughs)))(. .))```
 
+<img src="img/cky_parse2.png"></img>
+
 ## Exercise 1. 
 Train for more iterations by incresing the value of the *-SMcycles* parameter.
 Then, parse file ```wsj_23.pos``` and ```wsj_24.pos``` again. What happens?
