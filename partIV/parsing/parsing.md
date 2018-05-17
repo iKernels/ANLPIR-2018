@@ -280,8 +280,8 @@ Let assume we've a grammar with the following production rules.
    <td> 1.0 </td>
   </tr>
   <tr>
-    <td> NP -> DT NN <br/> NP -> NN NNS</td>
-    <td> 0.6 <br/> 0.4 </td>
+    <td> NP -> DT NN <br/> NP -> NN NNS </br> NP -> DT NP </td>
+    <td> 0.4 <br/> 0.3 <br/> 0.3 </td>
   </tr>
   <tr>
     <td> DT -> The </td>
