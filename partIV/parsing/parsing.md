@@ -290,7 +290,7 @@ Rule | Probability
   </tr>
   <tr>
     <td> NP -> DT NN <br/> NP -> NN NNS</td>
-    <td>0.6 <br/> laughs</td>
+    <td>0.6 <br/> 0.4 </td>
   </tr>
  </table>
 </pre>
