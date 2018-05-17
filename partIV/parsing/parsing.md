@@ -314,7 +314,7 @@ If you look at the top of the chart you see that the there are only two way of b
 
 - (S -> @S .) &middot; (@S -> NP VP) &middot; (. -> .) &middot; (NP -> DT NN) &middot; (VP -> VBZ) &middot; (DT -> The) &middot; (NN -> dog) &middot; (VBZ -> laughs) <br/> = 0.6 &middot; 1.0 &middot; 1.0 &middot; 0.4 &middot; 1.0 &middot; 1.0 &middot; 1.0 &middot; 1.0  = 0.24
 
-- S -> NP . &middot;  
+- (S -> NP .) &middot;  (. -> .) &middot; (NP -> DT NP) &middot; (DT -> The) &middot; (NP -> NN NNS) &middot; (NN -> dog) &middot; (NNS -> laughs) <br/> = 0.4 &middot; 1.0 &middot; 0.3 &middot; 1.0 &middot; 0.3 &middot; 1.0 &middot;  1.0 = 0.036
 
 ## Exercise 1. 
 Train for more iterations by incresing the value of the *-SMcycles* parameter.
