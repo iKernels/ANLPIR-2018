@@ -308,7 +308,7 @@ Let assume we've a grammar with the following production rules.
 
 Then, by applying the CKY algorithm we have the following parsing chart:
 
-<img src="img/cky_complete.png" />
+<img src="img/cky_complete.png"></img>
 
 
 
