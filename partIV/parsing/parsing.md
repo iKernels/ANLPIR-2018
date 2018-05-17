@@ -306,7 +306,7 @@ Let assume we've a grammar with the following production rules.
  </table>
 </pre>
 
-Then, by applying the CKY algorithm we have the following parsing chart:
+Then, by applying the [CKY algorithm](https://github.com/iKernels/ANLPIR-2018/blob/master/partIV/PARSING-AINLP.pdf) we have the following parsing chart:
 
 <img src="img/cky_complete.png"></img>
 
