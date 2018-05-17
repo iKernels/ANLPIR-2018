@@ -260,7 +260,7 @@ You should get the following (log-)likelihood value:
 
 Let assume we've a grammar with the following production rules.
 
-Precision | Recall 
+Rule | Probability 
 --------- | ------ 
   S -> S. | 1.0 
   
