@@ -256,6 +256,29 @@ You should get the following (log-)likelihood value:
 -31.23685977325989
 ```
 
+## How parsing works? 
+Let assume we've a grammar with the following production rules.
+
+S -> @S . |  1.0
+--------------------
+@S -> NP VP | 0.9
+@S -> NP    | 0.1
+--------------------
+VP -> VBZ   | 0.4
+VP -> VB NP | 0.4
+VP -> VP PP | 0.2
+--------------------
+NP -> DT NN  | 0.6
+NP -> DT NNS | 0.4
+--------------------
+DT -> The | 1.0
+--------------------
+NN -> dog | 1.0
+--------------------
+laughs -> VBZ | 0.6
+laughs -> NNS | 0.4
+--------------------
+
 
 ## Exercise 1. 
 Train for more iterations by incresing the value of the *-SMcycles* parameter.
