@@ -260,21 +260,12 @@ You should get the following (log-)likelihood value:
 
 Let assume we've a grammar with the following production rules.
 
-Rule | Probability 
---------- | ------ 
-  S -> S . | 1.0 
-  S -> NP VP | 0.9 
-  S -> NP | 0.1 
-  VP -> VBZ | 0.4
-  VP -> VB NP | 0.4
-  VP -> VP PP | 0.2
-
 
 <pre>
  <table>
-  <tr>  
+  <tr>
    <th style="font-size: 110%; font-family: Arial, Helvetica, sans-serif"> Rule </th>
-   <th style="font-size: 110%; font-family: Arial, Helvetica, sans-serif""> Probability </th>  
+   <th style="font-size: 110%; font-family: Arial, Helvetica, sans-serif""> Probability </th>
   </tr>
   <tr>
    <td> S -> @S . <br/> S -> NP .</td>
@@ -306,26 +297,6 @@ Rule | Probability
   <tr>
  </table>
 </pre>
-
-  
-
-S -> S . |  1.0
---------------------
-S -> NP VP | 0.9
-S -> NP    | 0.1
---------------------
-VP -> VBZ   | 1.0
---------------------
-NP -> DT NN  | 0.6
-NP -> DT NNS | 0.4
---------------------
-DT -> The | 1.0
---------------------
-NN -> dog | 1.0
---------------------
-laughs -> VBZ | 0.6
-laughs -> NNS | 0.4
---------------------
 
 
 ## Exercise 1. 
