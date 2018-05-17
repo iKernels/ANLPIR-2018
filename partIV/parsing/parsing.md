@@ -19,6 +19,11 @@ Thus, at very high level we have a hierarchical decomposition of the sentence in
 
 
 ## Unzip the tar.gz archive
+
+The berkeley.tar.gz contains the parser software. 
+
+Unzip the archive by typing the following command:
+
 ```
  $ tar -zxvf berkeley.tar.gz
 ```
@@ -328,6 +333,6 @@ So, the most likely parse is 1 that has a probability of 0.24.
 
 ## Exercise 1. 
 Train for more iterations by incresing the value of the *-SMcycles* parameter.
-Then, parse file ```wsj_23.pos``` and ```wsj_24.pos``` again and evaluate the results. What happens?
+Then, parse file ```wsj_23.pos``` and ```wsj_24.pos``` again and evaluate the results. What happens? 
 
 
