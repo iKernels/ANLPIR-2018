@@ -57,7 +57,7 @@ The treebank for the English language is the Walll Street Journal Penn Tree Bank
 
 The file `wsj_02-21.parse` in the data dir contains all the data from section 02 to section 21 of thte PTB corpus. 
 
-To train a parser model for Englis, type the following command:
+To train a parser model for English, type the following command:
 
 ```
  $ java -cp libs/BerkeleyParser-1.7.jar edu.berkeley.nlp.PCFGLA.GrammarTrainer -v -SMcycles 1 -path data/wsj_02-21.parse -out wsj_grammar.gr -treebank SINGLEFILE
@@ -105,22 +105,20 @@ Type the following command to evaluate the performance of the parsers on the sen
 ```
  $ ./EVALB/evalb -p EVALB/COLLINS.prm data/wsj_23.gold wsj_23.out
 ```
-<pre style="width:100%">
+
 Precision | Recall | FMeasure 
 --------- | ------ | --------
   72.83%  | 74.61% |  73.71%
-</pre>
 
 Type the following command to evaluate the performance of the parsers on the sentences in the 24th fold:
 
 ```
  $ ./EVALB/evalb -p EVALB/COLLINS.prm data/wsj_24.gold wsj_24.out
 ```
-<pre style="width:100%">
+
 Precision | Recall | FMeasure 
 --------- | ------ | --------
   72.01%  | 73.55% |  72.77%
-</pre>
 
 
 
