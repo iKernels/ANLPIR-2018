@@ -310,7 +310,10 @@ Then, by applying the CKY algorithm we have the following parsing chart:
 
 <img src="img/cky_complete.png"></img>
 
+If you look at the top of the chart you see that the there are only two way of building a complete parse tree:
 
+- S -> @S . &middot; @S -> NP VP &middot; . -> . &middot; NP -> DT NN &middot; DT -> The &middot; NN -> dog 
+- S -> NP . &middot;  
 
 ## Exercise 1. 
 Train for more iterations by incresing the value of the *-SMcycles* parameter.
