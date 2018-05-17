@@ -312,7 +312,7 @@ Then, by applying the CKY algorithm we have the following parsing chart:
 
 If you look at the top of the chart you see that the there are only two way of building a complete parse tree:
 
-1. (S -> @S .) &middot; (@S -> NP VP) &middot; (. -> .) &middot; (NP -> DT NN) &middot; (VP -> VBZ) &middot; (DT -> The) &middot; (NN -> dog) &middot; (VBZ -> laughs) <br/> = 0.6 &middot; 1.0 &middot; 1.0 &middot; 0.4 &middot; 1.0 &middot; 1.0 &middot; 1.0 &middot; 1.0  = 0.24
+1. (S -> @S .) &middot; (@S -> NP VP) &middot; (. -> .) &middot; (NP -> DT NN) &middot; (VP -> VBZ) &middot; (DT -> The) &middot; (NN -> dog) &middot; (VBZ -> laughs) <br/> = 0.6 &middot; 1.0 &middot; 1.0 &middot; 0.4 &middot; 1.0 &middot; 1.0 &middot; 1.0 &middot; 1.0  = **0.24**
 
 ```(S (@S (NP (DT The) (NN dog)) (VP (VBZ laughs)))(. .))```
 
@@ -323,6 +323,8 @@ If you look at the top of the chart you see that the there are only two way of b
 ```(S (NP (DT The) (NP (NN dog) (NNS laughs)))(. .))```
 
 <img src="img/cky_parse2_80.png"></img>
+
+So, the most likely parse is parse1 that has a probability of 0.24.
 
 ## Exercise 1. 
 Train for more iterations by incresing the value of the *-SMcycles* parameter.
