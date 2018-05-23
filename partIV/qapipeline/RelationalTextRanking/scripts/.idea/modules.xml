@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../cognet-demo/cluster_scripts/.idea/cluster_scripts.iml" filepath="$PROJECT_DIR$/../../cognet-demo/cluster_scripts/.idea/cluster_scripts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../cognet/Demo/clustering_scripts/.idea/clustering_scripts.iml" filepath="$PROJECT_DIR$/../../../cognet/Demo/clustering_scripts/.idea/clustering_scripts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/scripts.iml" filepath="$PROJECT_DIR$/.idea/scripts.iml" />
+    </modules>
+  </component>
+</project>

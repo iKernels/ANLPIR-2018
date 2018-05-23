@@ -1,0 +1,13 @@
+train_q=/home/kateryna/software/CoreQAPipeline/data/treccv/questions.txt
+train_a=/home/kateryna/software/CoreQAPipeline/data/treccv/terrier.BM25b0.75_0
+train_c=CASes/treccv-tois
+train_n=10
+test_n=50
+test_q=/home/kateryna/software/CoreQAPipeline/data/treccv/questions.txt
+test_a=/home/kateryna/software/CoreQAPipeline/data/treccv/terrier.BM25b0.75_0
+test_c=CASes/treccv-tois
+
+cv=True
+
+train_fc_featurefile=/home/kateryna/software/RelationalTextRanking/features_tois/tois_treccv_DEV.features
+test_fc_featurefile=/home/kateryna/software/RelationalTextRanking/features_tois/tois_treccv_DEV.features
