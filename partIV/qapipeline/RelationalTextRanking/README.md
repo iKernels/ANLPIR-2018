@@ -37,6 +37,7 @@ rm target/dependency/google-collections-1.0.jar
 
 export CLASSPATH=${CLASSPATH}:bin/:target/dependency/*:target/classes
 
+mkdir logs
 ```
 
 # Running the experiments
@@ -78,7 +79,7 @@ Its options are:
 
 ```experiment_launcher.py``` generates a shell script, which:
 * launches three parallel java processes which convert the input train, test, dev data into to structural representations (type of rep. selected by the ```-c``` parameter) and save them as training/test data in the SVMLight-TK format. 
-The train and dev data are saved in the ```data/examples/<corpus_name>_<experiment_label>_<current_date>``` folder in the svm.train and svm.test files, respectively. Test data are stored in the  ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>``` folder in the svm.test file.
+The train and dev data are saved in the ```data/examples/<corpus_name>_<experiment_label>_<current_date>``` folder in the svm.train and svm.test files, respectively. Test data are stored in the  ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>``` folder in the svm.test file. The information about examples labels is stored in the ```svm.relevancy``` files line-by-line aligned with the svm.test files.
 * trains and SVMLight-TK model on svm.train and stores it in the ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>/svm_<suf>.model``` file
 * classifies dev and test data and outputs predictions into ```svm_<suf>.pred``` files
 * evaluates the performance
@@ -114,27 +115,88 @@ export corpus_name=wikiqa_toy
 
 You may run experiments with the following structures as written below. The experiment launcher script generates a script file with the commands inside.
 
-### Shallow chunk-based structure
+The below commands will output something like the following:
+```nohup sh scripts/generated_scripts/<corpus_name>_<experiment_label>_<date>_<suffix>.sh > logs/<corpus_name>_<experiment_label>_<date>_<suffix>.log 2>&1  &```
+Launch this script to run an end-to-end experiment.
+In order to see perfomance simply do:
+```bash
+tail -11 logs/<corpus_name>_<experiment_label>_<date>_<suffix>.log
+```
+First table reports performance on the development data, and the second on the test data. REF_FILE is the upper bound of performance. SVM is the performance of your system.
+
+You may see the expected performance of the below scrips in [this google spreadsheet](https://docs.google.com/spreadsheets/d/1IyAQmZbNECrQXGlf3r5ExlNY5oWh9OjlOttJbzovlP8/edit#gid=0).
+
+#### Shallow chunk-based structure (CH)
 ```bash
 python scripts/experiment_launchers/experiment_launcher.py  -l ${corpus_name} -o scripts/generated_scripts -c CH -p "-t 5 -F 3 -C T -m 1000"  -e it.unitn.nlpir.experiment.fqa.CHExperiment -suf T -s it.unitn.nlpir.system.core.ClassTextPairConversion -ate " -skipAllSame" -ade " -skipAllSame"
 ```
-### CONST structure
+#### CONST structure (CONST)
 ```bash
 python scripts/experiment_launchers/experiment_launcher.py  -l ${corpus_name} -o scripts/generated_scripts -c CONST -p "-t 5 -F 3 -C T -m 1000"  -e it.unitn.nlpir.experiment.fqa.ConstExperiment -suf T -s it.unitn.nlpir.system.core.ClassTextPairConversion -ate " -skipAllSame" -ade " -skipAllSame"
 ```
-### DT1 structure
+#### DT1 structure (DT1)
 ```bash
 python scripts/experiment_launchers/experiment_launcher.py  -l ${corpus_name} -o scripts/generated_scripts -c DT1 -p "-t 5 -F 3 -C T -m 1000"  -e it.unitn.nlpir.experiment.fqa.DT1Experiment -suf T -s it.unitn.nlpir.system.core.ClassTextPairConversion  -ate " -skipAllSame" -ade " -skipAllSame"
 ```
 
-### DT2 structure
+#### DT2 structure (DT2)
 ```bash
 #DT2 structure
 python scripts/experiment_launchers/experiment_launcher.py  -l ${corpus_name} -o scripts/generated_scripts -c DT2 -p "-t 5 -F 3 -C T -m 1000"  -e it.unitn.nlpir.experiment.fqa.DT2Experiment -suf T -s it.unitn.nlpir.system.core.ClassTextPairConversion  -ate " -skipAllSame" -ade " -skipAllSame"
 ```
 
-### DT3q_DT2a structure
+#### LCT<sub>Q</sub>-DT2<sub>A</sub> structure (DT3q_DT2a)
 ```bash
 python scripts/experiment_launchers/experiment_launcher.py  -l ${corpus_name} -o scripts/generated_scripts -c DT3q_DT2a -p "-t 5 -F 3 -C T -m 1000"  -e it.unitn.nlpir.experiment.fqa.LCTqDT2aExperiment -suf T -s it.unitn.nlpir.system.core.ClassTextPairConversion  -ate " -skipAllSame" -ade " -skipAllSame"
 ```
+
+#### Running reranking with shallow chunk-based structure (CH)
+```bash
+python scripts/experiment_launchers/experiment_launcher.py  -l ${corpus_name} -o scripts/generated_scripts -c CH_rer -p "-t 5 -F 3 -C T -W R -V R -m 1000"  -e it.unitn.nlpir.experiment.fqa.CHExperiment -suf T -s it.unitn.nlpir.system.core.RERTextPairConversion -ate " -skipAllSame" -ade " -skipAllSame"
+```
+
+## Using the performance evaluation script
+Use the following script to evaluate the peformance:
+
+```bash
+python scripts/eval/ev.py --ignore_noanswer --ignore_allanswer data/examples/<experimental_folder>/svm.relevancy data/examples/<experimental_folder>/<predictions_file>
+```
+Note that svm.relevancy and ```<predictions_file>``` should be aligned line-by-line.
+
+## Visualizing the structural representations demo
+
+If you want to build and visualize structural representations for two input texts, run the following:
+
+```bash
+java -Xmx4G it.unitn.nlpir.system.demo.TextPairRepresentationDemo -expClassName it.unitn.nlpir.experiment.fqa.<structure_generation_class_name>
+```
+
+For example, if you want to see a CONST structure, you may run:
+```bash
+java -Xmx4G it.unitn.nlpir.system.demo.TextPairRepresentationDemo -expClassName it.unitn.nlpir.experiment.fqa.ConstExperiment
+```
+After initialization, the interactive prompt with ask you to enter question and answer delimited by a tab and press ```Enter```.
+The demo will then generate the pseudo-code for the structural representations of your input pairs.
+
+For example, if you enter:
+```
+What is the capital of Italy?   Rome is the capital.
+```
+the demo will output:
+```
+[main] INFO it.unitn.nlpir.experiment.fqa.TrecQAWithQCExperiment - [ROOT [ROOT [SBARQ [WHNP [WP [what::w]]] [SQ [VBZ [be::v]] [NP [REL-FOCUS-LOC-NP [DT [the::d]] [REL-NN [capital::n]]] [PP [IN [of::i]] [NP [NNP [italy::n]]]]]] [. [?::.]]]]]       [ROOT [ROOT [S [REL-FOCUS-LOC-NP [NNP [rome::n]]] [VP [VBZ [be::v]] [REL-NP [DT [the::d]] [REL-NN [capital::n]]]] [. [.::.]]]]]
+[main] INFO it.unitn.nlpir.system.demo.TextPairRepresentationDemo - Text1: (ROOT (ROOT (SBARQ (WHNP (WP (what::w))) (SQ (VBZ (be::v)) (NP (REL-FOCUS-LOC-NP (DT (the::d)) (REL-NN (capital::n))) (PP (IN (of::i)) (NP (NNP (italy::n)))))) (. (?::.)))))
+[main] INFO it.unitn.nlpir.system.demo.TextPairRepresentationDemo - Text2: (ROOT (ROOT (S (REL-FOCUS-LOC-NP (NNP (rome::n))) (VP (VBZ (be::v)) (REL-NP (DT (the::d)) (REL-NN (capital::n)))) (. (.::.)))))
+```
+Copy-paste the first line, namely
+``` 
+[ROOT [ROOT [SBARQ [WHNP [WP [what::w]]] [SQ [VBZ [be::v]] [NP [REL-FOCUS-LOC-NP [DT [the::d]] [REL-NN [capital::n]]] [PP [IN [of::i]] [NP [NNP [italy::n]]]]]] [. [?::.]]]]]       [ROOT [ROOT [S [REL-FOCUS-LOC-NP [NNP [rome::n]]] [VP [VBZ [be::v]] [REL-NP [DT [the::d]] [REL-NN [capital::n]]]] [. [.::.]]]]]
+```
+to http://ironcreek.net/phpsyntaxtree/? and you will see the visualization of your question and answer trees.
+
+
+
+
+
+
 
