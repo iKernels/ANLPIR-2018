@@ -9,17 +9,20 @@ The detailed documentation on how to set up all possible experimental configurat
 The tool requires the following prerequisites:
 *	Java 1.8+
 *	Apache Maven > 3.3.9. Refer to http://maven.apache.org/install.html for the installation instructions
+* Python 2.7.x (required by the evaluation script)
 
 ## Installing
+If this is the first time that you are using the global ANLPIR-2018 course repository, clone it as follows:
 ```bash
 git clone https://github.com/iKernels/ANLPIR-2018.git
 ```
-if you have not cloned the course repo yet, otherwise do simply 
+
+Otherwise, simply pull:
 ```bash 
 git pull
 ```
 
-Then,
+Run the following command sequence to install the software and set the Java classpath.
 
 ```bash
 cd ./partIV/qapipeline/RelationalTextRanking
@@ -57,7 +60,47 @@ Run the following command to prepare the input file with the toy input data:
 python scripts/converters/extract_trainset_subset.py -i data/wikiQA/WikiQA-train.questions.txt -o  data/wikiQA/WikiQA-train.questions.toy.txt -p 0.3
 ```
 
-## Running experiments
+## Running experiments with a conveniency script
+We provide a conveniency python script which generates a shell script which runs the end-to-end experiment in a specific configuration:
+```bash 
+python scripts/experiment_launchers/experiment_launcher.py  
+```
+
+Its options are:
+* ```-l```: corpus name; The script will look for a file named ```scripts/experiment_launchers/corpus_settings/<corpusname>.setting``` which contains relative paths to the corpus train and test files;
+* ```-o```: in which folder to store the end-to-end experimental shell script;
+* ```-c```: experiment label (can be any, is used to generate name for the folder with the experimental data;
+* ```-p```: SVMLight-TK parameters (run ```tools/SVM-Light-1.5-rer/svm_learn``` to see the possible options); 
+* ```-e```: name of the class with which you want to generate the structural representations (see below for the possible options);
+* ```-suf```: by default the model will be stored in the ```svm_${suf}.model``` file;
+* ```-s```: specifies in for which setting you want to generate the input data, reranking or classification (see below for the possible options); 
+* ```-ate " -skipAllSame" -ade" -skipAllSame"```: add this if you want skip the questions which have only positive or only negative answers in the corpus.
+
+```experiment_launcher.py``` generates a shell script, which:
+* launches three parallel java processes which convert the input train, test, dev data into to structural representations (type of rep. selected by the ```-c``` parameter) and save them as training/test data in the SVMLight-TK format. 
+The train and dev data are saved in the ```data/examples/<corpus_name>_<experiment_label>_<current_date>``` folder in the svm.train and svm.test files, respectively. Test data are stored in the  ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>``` folder in the svm.test file.
+* trains and SVMLight-TK model on svm.train and stores it in the ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>/svm_<suf>.model``` file
+* classifies dev and test data and outputs predictions into ```svm_<suf>.pred``` files
+* evaluates the performance
+
+### Structure and settings options
+#### Structure generation classes (-c option)
+All structure generators are available as classes in the ```it.unitn.nlpir.experiment.fqa``` package.
+See the descriptions of the structures in the tables below. Images are reduced in size to fit into the table. Open them in a new browser tab to see the full-size version.
+
+|Abbreviation | Class | Example |Description|
+|---|---|---|---|
+|CH | ```CHExperiment```  |![](img/ch.png)|Here, T1 and T2 are both represented as shallow tree structures with lemmas as leaves, their POS-tags as their parent nodes. The POS- tag nodes are further grouped under chunk and sentence nodes. CH excludes punctuation marks and words not included into any chunk.|
+|DT1 | ```DT1Experiment```  |![](img/dt1.png)|A dependency tree in which grammatical relations become nodes and lemmas are located at the leaf level|
+|DT2 | ```DT2Experiment```  |![](img/dt2.png)|DT1 modified to include the chunking information, and lemmas in the same chunk are grouped under the same chunk node.|
+|LCT<sub>Q</sub>-DT2<sub>A</sub>  | ```LCTqDT2aExperiment```  |![](img/lct.png)| T2 is represented as DT2. T1 is represented as a lexical-centered dependency tree with the grammatical relation ```REL(head,child)``` represented as ```(head (child HEAD GR-REL POS-pos(head))```. Here ```REL``` is a grammatical relation, ```head``` and ```child``` are the head and child lemmas in the relation, respectively, and ```pos(head)``` is the POS-tag of the head lemma. ```GR-``` and ```POS-``` tag in the node name indicates that the node is grammar relation or part-of-speech node, respectively. |
+|CONST |```ConstExperiment``` |![](img/const.png)|Constituency tree|
+
+#### Input data generation settings (-c option)
+* **ClassTextPairConversion.** Generates the SVMLightTK train/test file to be used with the classification kernel
+* **RERTextPairConversion.** Generates the SVMLightTK train/test file to be used with the classification kernel
+
+### Running experiments on WikiQA
 To train on full-scale data (will take time):
 ```bash
 export corpus_name=wikiqa
