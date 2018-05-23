@@ -12,8 +12,13 @@ The tool requires the following prerequisites:
 
 ## Installing
 ```bash
-git clone https://github.com/iKernels/RelationalTextRanking.git
+git clone https://github.com/iKernels/ANLPIR-2018.git
+```
+if you have not cloned the course repo yet, otherwise do simply ```bash git pull```.
 
+```bash
+cd ./partIV/qapipeline/RelationalTextRanking
+```
 cd ./RelationalTextRanking
 
 export JAVA_HOME=<path to your JDK distribution>
