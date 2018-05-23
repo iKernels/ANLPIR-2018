@@ -1,5 +1,3 @@
-The detailed documentation on how to set up all possible experimental configurations will be made avaialble on March 10, 2017. An [end-to-end example](#running-an-end-to-end-example) usage is already available.
-
 **RelTextRank** is flexible Java pipeline for converting pairs of raw texts into structured representations and enriching them with semantic information about the relations between the two pieces of text (e.g., lexical exact match). 
 
 
