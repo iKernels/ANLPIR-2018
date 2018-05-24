@@ -1,7 +1,7 @@
 **RelTextRank** is flexible Java pipeline for converting pairs of raw texts into structured representations and enriching them with semantic information about the relations between the two pieces of text (e.g., lexical exact match). 
 
 Its earlier version is described here:
-* Tymoshenko, Kateryna, et al. ["RelTextRank: An Open Source Framework for Building Relational Syntactic-Semantic Text Pair Representations."] (http://www.aclweb.org/anthology/P17-4014) Proceedings of ACL 2017, System Demonstrations (2017): 79-84.
+* Tymoshenko, Kateryna, et al. ["RelTextRank: An Open Source Framework for Building Relational Syntactic-Semantic Text Pair Representations."](http://www.aclweb.org/anthology/P17-4014) Proceedings of ACL 2017, System Demonstrations (2017): 79-84.
 
 
 # Installation
