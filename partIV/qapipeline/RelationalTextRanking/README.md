@@ -94,9 +94,7 @@ which:
     * DEV: ```data/examples/<corpus_name>_<experiment_label>_<current_date>/svm_<suf>.pred``` 
     * TEST: ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>/svm_<suf>.pred``` 
 * evaluates the performance. You may see it here:
-    * ```bash
-    tail -11 logs/<corpus_name>_<experiment_label>_<date>_<suffix>.log
-    ```
+    * ```tail -11 logs/<corpus_name>_<experiment_label>_<date>_<suffix>.log```
    
 
 
@@ -115,7 +113,10 @@ See the descriptions of the structures in the tables below. Images are reduced i
 
 #### Input data generation settings (-s option)
 * **ClassTextPairConversion.** Generates the SVMLightTK train/test file to be used with the classification kernel
-* **RERTextPairConversion.** Generates the SVMLightTK train/test file to be used with the classification kernel
+   * Classification kernel is ```Kclass(P1,P2)=K(Q1,Q2)+ K(A1,A2)```. The respective system classifies input ```P=(Q,A)``` question-answer pairs.
+* **RERTextPairConversion.** Generates the SVMLightTK train/test file to be used with the reranking kernel
+   * Reranking kernels is applied to pairs of Q/A pairs ```Krer<(P1,P2), (P1',P2')>```. The respective system is trained on input pairs of Q/A pairs ```(P1,P2)```, which is positive if ```P1``` should be ranked  higher (i.e. more correct) than ```P2```, and negative otherwise. 
+
 
 ### Running experiments on WikiQA
 To train on full-scale data (will take time):
@@ -170,6 +171,7 @@ python scripts/experiment_launchers/experiment_launcher.py  -l ${corpus_name} -o
 ```bash
 python scripts/experiment_launchers/experiment_launcher.py  -l ${corpus_name} -o scripts/generated_scripts -c CH_rer -p "-t 5 -F 3 -C T -W R -V R -m 1000"  -e it.unitn.nlpir.experiment.fqa.CHExperiment -suf T -s it.unitn.nlpir.system.core.RERTextPairConversion -ate " -skipAllSame" -ade " -skipAllSame"
 ```
+In all the above experiments you have been using the Partial Tree Kernel (-F 3). If you want to use the Subset Tree Kernel, for example, you can change this to  ```-F 1```. Traning will be faster, but the results will be lower.
 
 ## Using the performance evaluation script
 Use the following script to evaluate the peformance:
