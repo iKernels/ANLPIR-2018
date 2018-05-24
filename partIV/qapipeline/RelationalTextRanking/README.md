@@ -63,6 +63,8 @@ python scripts/converters/extract_trainset_subset.py -i data/wikiQA/WikiQA-train
 ```
 
 ## Running experiments with a conveniency script
+* **You may find the actual examples of how to run BELOW IN THE  Running experiments on WikiQA section (at the end of this readme). Please use them.**
+
 We provide a conveniency python script which generates a shell script which runs the end-to-end experiment in a specific configuration:
 
 ```bash 
