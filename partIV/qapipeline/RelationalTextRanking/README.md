@@ -101,7 +101,7 @@ which:
 ### Structure and settings options
 #### Structure generation classes (-c option)
 All structure generators are available as classes in the ```it.unitn.nlpir.experiment.fqa``` package.
-See the descriptions of the structures in the tables below. Images are reduced in size to fit into the table. Open them in a new browser tab to see the full-size version.
+See the descriptions of the structures in the tables below. Images are reduced in size to fit into the table. Open them in a new browser tab to see the full-size version. All these classes convert input pairs of texts ```(T1,T2)``` into relational structural representations.
 
 |Abbreviation | Class | Example |Description|
 |---|---|---|---|
