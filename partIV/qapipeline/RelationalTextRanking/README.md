@@ -61,6 +61,7 @@ python scripts/converters/extract_trainset_subset.py -i data/wikiQA/WikiQA-train
 
 ## Running experiments with a conveniency script
 We provide a conveniency python script which generates a shell script which runs the end-to-end experiment in a specific configuration:
+
 ```bash 
 python scripts/experiment_launchers/experiment_launcher.py  
 ```
@@ -75,12 +76,29 @@ Its options are:
 * ```-s```: specifies in for which setting you want to generate the input data, reranking or classification (see below for the possible options); 
 * ```-ate " -skipAllSame" -ade" -skipAllSame"```: add this if you want skip the questions which have only positive or only negative answers in the corpus.
 
-```experiment_launcher.py``` generates a shell script, which:
-* launches three parallel java processes which convert the input train, test, dev data into to structural representations (type of rep. selected by the ```-c``` parameter) and save them as training/test data in the SVMLight-TK format. 
-The train and dev data are saved in the ```data/examples/<corpus_name>_<experiment_label>_<current_date>``` folder in the svm.train and svm.test files, respectively. Test data are stored in the  ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>``` folder in the svm.test file. The information about examples labels is stored in the ```svm.relevancy``` files line-by-line aligned with the svm.test files.
-* trains and SVMLight-TK model on svm.train and stores it in the ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>/svm_<suf>.model``` file
-* classifies dev and test data and outputs predictions into ```svm_<suf>.pred``` files
-* evaluates the performance
+```experiment_launcher.py``` generates a shell script
+
+```nohup sh scripts/generated_scripts/<corpus_name>_<experiment_label>_<date>_<suffix>.sh > logs/<corpus_name>_<experiment_label>_<date>_<suffix>.log 2>&1  &```
+
+which:
+* launches three parallel java processes which convert the input train, test, dev data into to structural representations (type of rep. selected by the ```-c``` parameter) and save them as training/test data in the SVMLight-TK format. It generates the following files and folders:
+ * ```data/examples/<corpus_name>_<experiment_label>_<current_date>```
+    * ```svm.train```: TRAIN data in SVMLight-TK format
+    * ```svm.test```: DEVELOPMENT data in SVMLight-TK format
+    * ```svm.relevancy```: question and answer ids for ```svm.test```. Line-by-line aligned with ```svm.test```.
+ * ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>``` 
+    * ```svm.test```: TEST data in SVMLight-TK format
+    * ```svm.relevancy```: question and answer ids for ```svm.test```. Line-by-line aligned with ```svm.test```.
+* trains and SVMLight-TK model on ```data/examples/<corpus_name>_<experiment_label>_<current_date>/svm.train``` and stores it in the ```data/examples/<corpus_name>_<experiment_label>_<current_date>/svm_<suf>.model``` file
+* classifies DEV and TEST data and outputs predictions into:
+    * DEV: ```data/examples/<corpus_name>_<experiment_label>_<current_date>/svm_<suf>.pred``` 
+    * TEST: ```data/examples/<corpus_name>_TEST_<experiment_label>_<current_date>/svm_<suf>.pred``` 
+* evaluates the performance. You may see it here:
+    * ```bash
+    tail -11 logs/<corpus_name>_<experiment_label>_<date>_<suffix>.log
+    ```
+   
+
 
 ### Structure and settings options
 #### Structure generation classes (-c option)
@@ -95,7 +113,7 @@ See the descriptions of the structures in the tables below. Images are reduced i
 |LCT<sub>Q</sub>-DT2<sub>A</sub>  | ```LCTqDT2aExperiment```  |![](img/lct.png)| T2 is represented as DT2. T1 is represented as a lexical-centered dependency tree with the grammatical relation ```REL(head,child)``` represented as ```(head (child HEAD GR-REL POS-pos(head))```. Here ```REL``` is a grammatical relation, ```head``` and ```child``` are the head and child lemmas in the relation, respectively, and ```pos(head)``` is the POS-tag of the head lemma. ```GR-``` and ```POS-``` tag in the node name indicates that the node is grammar relation or part-of-speech node, respectively. |
 |CONST |```ConstExperiment``` |![](img/const.png)|Constituency tree|
 
-#### Input data generation settings (-c option)
+#### Input data generation settings (-s option)
 * **ClassTextPairConversion.** Generates the SVMLightTK train/test file to be used with the classification kernel
 * **RERTextPairConversion.** Generates the SVMLightTK train/test file to be used with the classification kernel
 
