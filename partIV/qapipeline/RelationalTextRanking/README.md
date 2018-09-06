@@ -28,8 +28,6 @@ Run the following command sequence to install the software and set the Java clas
 ```bash
 cd ./partIV/qapipeline/RelationalTextRanking
 
-cd ./RelationalTextRanking
-
 export JAVA_HOME=<path to your JDK distribution>
 
 sh scripts/install/install.sh 
